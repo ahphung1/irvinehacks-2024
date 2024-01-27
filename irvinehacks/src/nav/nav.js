@@ -2,6 +2,7 @@ import './nav.css';
 
 
 function Nav() {
+  const userName = "User0"
   return (
     <div className="nav">
         <div className="logo-container">
@@ -9,7 +10,10 @@ function Nav() {
             <div className="zotzen">
                   zotzen
               </div>
-    </div>
+        </div>
+        <div className= "welcome-text">
+          Welcome {userName}!
+        </div>
     </div>
   );
 }
