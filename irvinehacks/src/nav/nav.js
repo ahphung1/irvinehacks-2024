@@ -2,7 +2,7 @@ import './nav.css';
 
 
 function Nav() {
-  const userName = "User0"
+  const userName = "User0";
   return (
     <div className="nav">
         <div className="logo-container">
