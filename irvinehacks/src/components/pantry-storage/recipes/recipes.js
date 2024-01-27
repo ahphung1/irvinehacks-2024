@@ -1,11 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './recipes.css';
+import Column from "../column-dividers.js";
 
-function App() {
+function RecipeColumn() {
   return (
-    <div className="App">
+    <div>
+      <Column value = {RecipeContents()}/>
     </div>
   );
 }
 
-export default App;
+function RecipeContents(){
+  return (
+    <div>
+      hello! recipe column
+    </div>
+  )
+}
+
+export default RecipeColumn;

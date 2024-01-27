@@ -1,12 +1,12 @@
 import './App.css';
-import Nav from './nav/nav';
-import Home from './home/home'; 
+import RecipeColumn from './components/pantry-storage/recipes/recipes';
+import ExpirationColumn from './components/pantry-storage/expiration/expiration';
 
 function App() {
   return (
-    <div className="root">
-      <Nav></Nav>
-      <Home></Home>
+    <div className="row">
+        <RecipeColumn />
+        <ExpirationColumn />
     </div>
   );
 }
