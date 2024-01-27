@@ -28,7 +28,6 @@ function Home() {
     <div className="home">
       {/* <div className="background-window"><GoogleCalendar></GoogleCalendar></div> */}
       <div className="background-window">
-        <h2>feed</h2>
         {/*<form class="submission" onSubmit={handleSubmit}>
           <TextField class="textfield" placeholder="type a message" onChange={handleInput} fullWidth></TextField>
           <Button class="stickybutton" type="submit" variant="contained" color="success">submit</Button>
@@ -44,7 +43,7 @@ function Home() {
           ))} 
         </div>
       </div>
-      <div className="right-bar">
+      <div className="pantry">
         <Pantry/>
       </div>
     </div>

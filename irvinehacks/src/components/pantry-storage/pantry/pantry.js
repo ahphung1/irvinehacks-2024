@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, {useState} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { v1 as uuidv1 } from 'uuid';
 
 
 const Pantry = () => {
@@ -72,10 +72,25 @@ const Pantry = () => {
         // });
         console.log("Yo, is this even getting through");
         console.log(items);
-        input.id = uuidv4();
+        input.id = uuidv1();
+        if (items.length == 0)
+        {
+            setItems([input])
+            return;
+        }
+        let i = 0;
+        while (i < items.length && compareDates(items[i].expiration_date, input.expiration_date) < 0)
+        {
+            i++;
+        }
+        items.splice(i, 0, input);
+        console.log(items);
+        setItems([...items]);
+        /*
         setItems([...items, 
             input
         ]);
+        */
         //console.log(reminders);
         
         console.log("keys: " + Object.keys(items));
@@ -83,7 +98,7 @@ const Pantry = () => {
     }
 
     const handleDelete = (item) => {
-        let newItems = items.filter(i => i.id != item.id)
+        let newItems = items.filter(i => i.id !== item.id)
         setItems([...newItems,
         ]);
     }
@@ -97,7 +112,7 @@ const Pantry = () => {
                 <h2>pantry</h2>
             </div>
             {items.map((item) => (
-                <div>
+                <div className="itembox">
                     <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
                     <Item id={item.id} name={item.name} description={item.description} expiration_date={item.expiration_date}/>
                 </div>
@@ -123,36 +138,88 @@ const Pantry = () => {
     )
 }
 
+const compareDates = (x, y) => {
+    // if one date is null, 
+    if (x == null)
+    {
+        return -1;
+    }
+    if (y == null)
+    {
+        return 1;
+    }
+    const dx = new Date(x);
+    const dy = new Date(y);
+    return dx.getTime() - dy.getTime();
+}
+
+const timeTilExpired = (date) => {
+    const d = new Date(date);
+    const diff = d.getTime() - Date.now();
+    let days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    const months = Math.floor(days / 30);
+    const daystring = days % 30 > 0 ? days % 30 + " day" + (days % 30 > 1 ? "s" : "") : "";
+    const monthstring = months > 0 ? months + " month" + (months > 1 ? "s" : "") : "";
+
+    if (days < 0)
+    {
+        return "Expired"
+    }
+    else if (days === 0)
+    {
+        return "Expires today"
+    }
+    return "Expires in " + (monthstring !== "" && daystring !== "" ? monthstring + ", " + daystring : monthstring + daystring);
+}
+
 const daysTilExpired = (date) => {
     const d = new Date(date);
     const diff = d.getTime() - Date.now();
-    return Math.round(diff / (1000 * 60 * 60 * 24));
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
 
 const Item = (props) => {
     const [StrikeThroughCSS, setStrikeThroughCSS] = useState(false)
+    const days_til_expired = daysTilExpired(props.expiration_date)
+    let expireStyle;
+    if (days_til_expired < 0)
+    {
+        expireStyle = "item item-expired"
+    }
+    else if (days_til_expired === 0)
+    {
+        expireStyle = "item item-expiring"
+    }
+    else if (days_til_expired < 8)
+    {
+        expireStyle = "item item-caution"
+    }
+    else
+    {
+        expireStyle = "item item-good"
+    }
+    
     return (<div className="item">
         <Checkbox color="success" onClick={() => 
             setStrikeThroughCSS((prev) => !prev)}
         /> {/* https://mui.com/material-ui/react-checkbox/ */}
-        <div className="item-details">
-            <p style={
+        <div className={expireStyle}>
+            <p className="item-title" style={
                 {
                     textDecoration: StrikeThroughCSS ? "line-through" : "none"
                 }}>{props.name}</p>
-            <p style={
+            <br/>
+            <p className="item-description" style={
                 {
                 textDecoration: StrikeThroughCSS ? "line-through" : "none"
             }}>{props.description}</p> 
-            <p style={
+            <br/>
+            <p className="item-description" style={
                 {
                     textDecoration: StrikeThroughCSS ? "line-through" : "none"
                 }
             }>
-                Expires in {daysTilExpired(props.expiration_date)} days
-            </p>
-            <p>
-                {props.id}
+                {timeTilExpired(props.expiration_date)}
             </p>
         </div>
     </div> 
