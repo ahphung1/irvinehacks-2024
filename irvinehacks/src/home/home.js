@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 //import Button from '@mui/material/Button';
 //import Card from '@mui/material/Card';
 //import CardContent from '@mui/material/CardContent';
+import Pantry from '../components/pantry-storage/pantry/pantry';
 
 function Home() {
   const [input, setInput] = useState('');
@@ -42,6 +43,9 @@ function Home() {
           */}
           ))} 
         </div>
+      </div>
+      <div className="right-bar">
+        <Pantry/>
       </div>
     </div>
   );
