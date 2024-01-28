@@ -4,6 +4,17 @@ import Nav from './nav/nav';
 import Home from './home/home'; 
 import Middle from './middle/middle';
 
+const localItemData = localStorage.getItem('items');
+const localExpiringData = localStorage.getItem('expiring');
+const localExpiredData = localStorage.getItem('expired');
+
+const localItems = localItemData == null ? [] : JSON.parse(localItemData);
+const localExpiring = localExpiringData == null ? [] : JSON.parse(localExpiringData);
+const localExpired = localExpiredData == null ? [] : JSON.parse(localExpiredData);
+
+
+
+
 function isExpired(item) {
   console.log(item);
   if (!Date.parse(item.expiration_date)) {
@@ -22,36 +33,52 @@ function isExpiring(item) {
 }
 
 function App() {
-  const [items, setItems] = useState([
-      {
-          name: "apples",
-          id: "wjavande",
-          expiration_date: "2024-02-03"
-      },
-      {
-          name: "potatoes",
-          id: "azerty",
-          expiration_date: "2024-12-24"
-      },
-      {
-          name: "marinara",
-          id: "dvorak",
-          expiration_date: "2025-02-03"
-      }
-  ]);
+  const [items, setItems] = useState(localItems)
+  //const [items, setItems] = useState([
+      //{
+          //name: "apples",
+          //id: "wjavande",
+          //expiration_date: "2024-02-03"
+      //},
+      //{
+          //name: "potatoes",
+          //id: "azerty",
+          //expiration_date: "2024-12-24"
+      //},
+      //{
+          //name: "marinara",
+          //id: "dvorak",
+          //expiration_date: "2025-02-03"
+      //}
+  //]);
 
-  const [expiredItems, setExpiredItems] = useState([])
+  const [expiredItems, setExpiredItems] = useState(localExpired)
 
-  const [expiringItems, setExpiringItems] = useState([])
+  const [expiringItems, setExpiringItems] = useState(localExpiring)
 
-  function updateExpiringItems(toExpiring) {
+  function updateExpiredItems(newItems) {
+    localStorage.setItem('expired', JSON.stringify(newItems));
+    setExpiredItems(newItems);
+  }
+
+  function updateExpiringItems(newItems) {
+    while (newItems.length > 0 && isExpired(newItems[0])) {
+      updateExpiredItems([...expiredItems, newItems[0]]);
+      newItems.shift();
+    }
+    localStorage.setItem('expiring', JSON.stringify(newItems));
+    setExpiringItems(newItems);
+  }
+
+  function addExpiringItems(toExpiring) {
     var newItems = [...expiringItems, ...toExpiring]
     console.log('expr')
     console.log(newItems)
     while (newItems.length > 0 && isExpired(newItems[0])) {
-      setExpiredItems([...expiredItems, newItems[0]]);
+      updateExpiredItems([...expiredItems, newItems[0]]);
       newItems.shift();
     }
+    localStorage.setItem('expiring', JSON.stringify(newItems));
     setExpiringItems(newItems);
   }
 
@@ -70,8 +97,9 @@ function App() {
       console.log(toExpiring)
       newItems.shift();
     }
-    setExpiredItems([...expiredItems, ...toExpire])
-    updateExpiringItems(toExpiring);
+    updateExpiredItems([...expiredItems, ...toExpire])
+    addExpiringItems(toExpiring);
+    localStorage.setItem('items', JSON.stringify(newItems))
     setItems(newItems);
    
   }
@@ -79,7 +107,7 @@ function App() {
   return (
     <div className="root">
       <Nav items={items}/>
-      <Middle expired={expiredItems} setExpired={setExpiredItems} expiring={expiringItems} setExpiring={setExpiringItems}/>
+      <Middle expired={expiredItems} setExpired={updateExpiredItems} expiring={expiringItems} setExpiring={updateExpiringItems}/>
       <Home items={items} setItems={(i) => updateItems(i)}/>
     </div>
   );
