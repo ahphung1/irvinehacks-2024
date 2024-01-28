@@ -5,6 +5,7 @@ import RecipeBar from '../components/pantry-storage/recipes/recipes.js';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Popup from 'reactjs-popup';
 import IconButton from '@mui/material/IconButton';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
 const loadedName = localStorage.getItem('username') 
 
@@ -30,15 +31,17 @@ function Nav({ items }) {
     <div className="navcontainer">
     <div className="nav">
       <div className="welcome-text">
-        <form onSubmit={handleNameSubmit}>
-          <input
-            type="text"
-            placeholder="What is your name?"
-            value={nameInput}
-            onChange={handleNameChange}
-          />
-          <IconButton type="submit"><AddCircleIcon /></IconButton>
-        </form>
+        <Popup onOpen={(event) => setNameInput('')} trigger={<IconButton className = "test"><BadgeOutlinedIcon/></IconButton>} modal nested>
+          <form onSubmit={handleNameSubmit}>
+            <input
+              type="text"
+              placeholder="What is your name?"
+              value={nameInput}
+              onChange={handleNameChange}
+            />
+            <IconButton type="submit"><AddCircleIcon /></IconButton>
+          </form>
+        </Popup>
         <h1>ZOT Pantry</h1>
         {userName && <h2>Welcome {userName}!</h2>}
       </div>

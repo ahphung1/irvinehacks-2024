@@ -27,7 +27,6 @@ const Pantry = ({items, setItems}) => {
       //}
     //]);
 
-    const [id, setId] = useState('');
 
     const[input, setInput] = useState({
         name: "",
@@ -39,7 +38,6 @@ const Pantry = ({items, setItems}) => {
             ...input,
             name: name,
         }); //this is probably wrong
-        console.log(input);
     }
     const expdate = (date) => {
         setInput({
@@ -61,7 +59,7 @@ const Pantry = ({items, setItems}) => {
         {
             return;
         }
-        if (items.length == 0)
+        if (items.length === 0)
         {
             setItems([input])
             return;
@@ -72,7 +70,6 @@ const Pantry = ({items, setItems}) => {
             i++;
         }
         items.splice(i, 0, input);
-        console.log(items);
         setItems([...items]);
         /*
         setItems([...items, 
@@ -81,8 +78,6 @@ const Pantry = ({items, setItems}) => {
         */
         //console.log(reminders);
         
-        console.log("keys: " + Object.keys(items));
-        console.log("Values:" + Object.values(items));
     }
 
     const handleDelete = (item) => {

@@ -16,7 +16,6 @@ const localExpired = localExpiredData == null ? [] : JSON.parse(localExpiredData
 
 
 function isExpired(item) {
-  console.log(item);
   if (!Date.parse(item.expiration_date)) {
     return false;
   }
@@ -72,8 +71,6 @@ function App() {
 
   function addExpiringItems(toExpiring) {
     var newItems = [...expiringItems, ...toExpiring]
-    console.log('expr')
-    console.log(newItems)
     while (newItems.length > 0 && isExpired(newItems[0])) {
       updateExpiredItems([...expiredItems, newItems[0]]);
       newItems.shift();
@@ -94,7 +91,6 @@ function App() {
     while (newItems.length > 0 && isExpiring(newItems[0]))
     {
       toExpiring.push(newItems[0])
-      console.log(toExpiring)
       newItems.shift();
     }
     updateExpiredItems([...expiredItems, ...toExpire])
