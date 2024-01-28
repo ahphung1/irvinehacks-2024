@@ -7,7 +7,7 @@
     background: linear-gradient(#D68C45, #FEFEE3);
 } */
 .middle {
-    margin: 10px;
+    margin: 15px;
 }
 
 .expirations {
@@ -16,7 +16,7 @@
     margin-right: auto;
     text-align: center;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .expirations2 {
@@ -25,4 +25,5 @@
     margin-right: auto;
     text-align: center;
     border-radius: 10px;
+    height: 100px;
 }
