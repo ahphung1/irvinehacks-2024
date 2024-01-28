@@ -22,12 +22,18 @@ function App() {
           expiration_date: "2025-02-03"
       }
   ]);
+
+  function updateItems(newItems) {
+    // use setItems
+    setItems(updateItems);
+    // store to local storage
+  }
   
   return (
     <div className="root">
       <Nav />
       <Middle />
-      <Home />
+      <Home items={items} setItems={setItems}/>
     </div>
   );
 }
