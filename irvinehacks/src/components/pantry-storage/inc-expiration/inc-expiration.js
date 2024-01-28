@@ -9,7 +9,7 @@ function Expiring({items, setItems}) {
       ]);
   }
   return (
-      <div className="container">
+      <div className="contain">
         {items.map((item) => (
           <div>
             <IconButton type="delete" className = "test" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>

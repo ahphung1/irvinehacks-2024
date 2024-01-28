@@ -6,10 +6,6 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Popup from 'reactjs-popup';
 import IconButton from '@mui/material/IconButton';
 
-const handleSubmit = (event) => {
-  
-}
-
 function Nav({ items }) {
   const [userName, setUserName] = useState('');
   const handleNameChange = (event) => {
@@ -32,8 +28,9 @@ function Nav({ items }) {
             value={userName}
             onChange={handleNameChange}
           />
-          <button type="submit">Submit</button>
+          <IconButton type="submit"><AddCircleIcon /></IconButton>
         </form>
+        <h1>ZOT Pantry</h1>
         {userName && <h2>Welcome {userName}!</h2>}
       </div>
     </div>
