@@ -106,7 +106,7 @@ function App() {
   
   return (
     <div className="root">
-      <Nav items={items}/>
+      <Nav items={[...expiringItems, ...items]}/>
       <Middle expired={expiredItems} setExpired={updateExpiredItems} expiring={expiringItems} setExpiring={updateExpiringItems}/>
       <Home items={items} setItems={(i) => updateItems(i)}/>
     </div>
