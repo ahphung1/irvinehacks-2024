@@ -1,5 +1,6 @@
 .home {
   position: static;
+  margin-right: 100px;
 }
 
 .submission {
@@ -17,7 +18,6 @@
   border-radius: 15px;
   width: 20%;
 }
-
 .stickies {
   display: flex;
   justify-content: space-evenly;
