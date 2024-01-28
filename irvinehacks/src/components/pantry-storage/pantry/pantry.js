@@ -1,5 +1,4 @@
 import './pantry.css';
-import Checkbox from '@mui/material/Checkbox';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
