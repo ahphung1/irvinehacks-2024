@@ -58,10 +58,14 @@ h2 {
     flex-direction: column;
     background-color: #A17268;
     border-radius: 15px;
-    margin: 10px;
+    margin: 5px;
     height: 650px;
     overflow: auto;
     width: 350px; /*used to be auto*/
+}
+
+.test {
+    color:#ffb0b0;
 }
 
 .chore-title {
