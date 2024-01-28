@@ -2,6 +2,13 @@ import './nav.css';
 import React, { useState } from 'react';
 import ProfilePicture from './profilepicture.png';
 import RecipeBar from '../components/pantry-storage/recipes/recipes.js';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Popup from 'reactjs-popup';
+import IconButton from '@mui/material/IconButton';
+
+const handleSubmit = (event) => {
+  
+}
 
 function Nav({ items }) {
   const [userName, setUserName] = useState('');
