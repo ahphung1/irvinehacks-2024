@@ -106,7 +106,7 @@ const Pantry = ({items, setItems}) => {
                 <Item name={item.name} expiration_date={item.expiration_date}/>
              </div>
             ))}
-                <Popup trigger={<IconButton className = "test"><AddCircleIcon/></IconButton>} modal nested>
+                <Popup onOpen={event => expdate("")} trigger={<IconButton className = "test"><AddCircleIcon/></IconButton>} modal nested>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">
                             <p>Name:</p>
