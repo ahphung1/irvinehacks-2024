@@ -4,6 +4,20 @@ import Column from "../column-dividers.js";
 
 const api_key = 'a2d3ea4415e3415cbef769aa4b7a86de';
 
+// function RecipeNav() {
+//   return (
+//     <div className="recipe-scroll">
+//       <RecipeItem text = "league of legengdsleague of legengdsleague of legengdsleague of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+      // <RecipeItem text = "league of legengds"/>
+//     </div>
+//   );
+// }
+
 function RecipeBar({ items }) {
   const [recipes, setRecipes] = useState([]);
 

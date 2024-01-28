@@ -190,7 +190,6 @@ const Item = (props) => {
     return (
     <div className={expireStyle}>
         <p className="item-title">{props.name}</p>
-        <br/>
         <p className="item-description">
             {timeTilExpired(props.expiration_date)}
         </p>

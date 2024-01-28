@@ -61,11 +61,7 @@ h2 {
     margin: 5px;
     height: 650px;
     overflow: auto;
-    width: 350px; /*used to be auto*/
-}
-
-.test {
-    color:#ffb0b0;
+    width: 450px;
 }
 
 .chore-title {

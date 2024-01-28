@@ -1,10 +1,13 @@
-.middle {
+/* .middle {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-left: 5%;
-    width: 20vw;
+    width: 200px;
     background: linear-gradient(#D68C45, #FEFEE3);
+} */
+.middle {
+    margin: 10px;
 }
 
 .expirations {
@@ -12,4 +15,14 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.expirations2 {
+    background-color: #4C956C;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
 }
