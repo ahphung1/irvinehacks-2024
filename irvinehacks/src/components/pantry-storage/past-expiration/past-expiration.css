@@ -1,0 +1,22 @@
+.pastexpir {
+  height: 300px;
+  width: 500px;
+  border: 0px;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #2C6E49;
+  border-radius: 5px;
+}
+
+.container {
+  height: 300px;
+  width: 500px;
+  border: 0px;
+  background-color: #2C6E49;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  stroke-width: 8px;
+  stroke: #4C956C;
+}

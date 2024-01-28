@@ -1,5 +1,6 @@
 .home {
-  background-color: #FEFEE3;
+  position: fixed;
+  right: 0;
 }
 
 .submission {

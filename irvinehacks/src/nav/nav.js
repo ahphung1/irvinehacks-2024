@@ -5,7 +5,7 @@ import RecipeBar from '../components/pantry-storage/recipes/recipes.js';
 function Nav() {
   const userName = "Steven";
   return (
-    <div>
+    <div className="navcontainer">
       <div className = "nav">
         <div className= "welcome-text">
           <h2>Welcome {userName}!</h2>

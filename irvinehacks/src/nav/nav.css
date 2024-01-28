@@ -6,6 +6,10 @@
   width: 20vw;
 }
 
+.navcontainer {
+  background: linear-gradient(#D68C45, #FEFEE3);
+}
+
 .welcome-text {
   font-size: 25px;
 }

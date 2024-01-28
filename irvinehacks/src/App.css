@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* background-color: #F7F5FB; */
   font-family: 'Suwannaphum', serif;
 }
 
@@ -11,4 +10,5 @@
   width: 100vw;
   height: 100vh;
   font-size: 16pt;
+  background: linear-gradient(#D68C45, #FEFEE3);
 }
