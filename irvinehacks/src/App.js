@@ -4,6 +4,15 @@ import Nav from './nav/nav';
 import Home from './home/home'; 
 import Middle from './middle/middle';
 
+function isExpired(item) {
+  console.log(item);
+  if (!Date.parse(item.expiration_date)) {
+    return false;
+  }
+  const date = new Date(item.expiration_date);
+  return date.getTime() < Date.now();
+}
+
 function App() {
   const [items, setItems] = useState([
       {
@@ -23,17 +32,27 @@ function App() {
       }
   ]);
 
+  const [expiredItems, setExpiredItems] = useState([])
+
   function updateItems(newItems) {
-    // use setItems
-    setItems(updateItems);
-    // store to local storage
+
+    while (newItems.length > 0 && isExpired(newItems[0]))
+    {
+      setExpiredItems([...expiredItems, newItems[0]]);
+      newItems.shift();
+    }
+    console.log('exp')
+    console.log(expiredItems);
+    console.log(newItems);
+    setItems(newItems);
+   
   }
   
   return (
     <div className="root">
       <Nav items={items}/>
       <Middle />
-      <Home items={items} setItems={setItems}/>
+      <Home items={items} setItems={(i) => updateItems(i)}/>
     </div>
   );
 }
