@@ -2,11 +2,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10%;
+    padding-left: 5%;
     width: 20vw;
-    background-color: #AABD8C; 
+    background: linear-gradient(#D68C45, #FEFEE3);
 }
 
 .expirations {
-    text-align: start;
+    background-color: #2C6E49;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }

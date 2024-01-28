@@ -1,7 +1,6 @@
 
 .itembox {
     padding-top: 10px;
-    padding-left: 200px;
 }
 
 .item {
@@ -51,12 +50,15 @@ h2 {
     width: 25%;
 }
 
-.chore-list {
+.pantry-items {
+    display: flex;
+    flex-direction: column;
     background-color: #A17268;
     border-radius: 15px;
     margin: 10px;
-    height: 40px;
-    width: 250px;
+    height: 650px;
+    overflow: auto;
+    width: auto;
 }
 
 .chore-title {

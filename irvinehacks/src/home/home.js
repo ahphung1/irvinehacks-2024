@@ -6,12 +6,13 @@ import React, { useState } from 'react';
 //import CardContent from '@mui/material/CardContent';
 import Pantry from '../components/pantry-storage/pantry/pantry';
 
-function Home() {
+function Home({items, setItems}) {
+
 
   return (
     <div className="home">
       <div className="pantry">
-        <Pantry/>
+        <Pantry items={items} setItems={setItems}/>
       </div>
     </div>
   );
