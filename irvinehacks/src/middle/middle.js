@@ -1,14 +1,20 @@
 import './middle.css';
 import PastExpiration from '../components/pantry-storage/past-expiration/past-expiration.js';
+import Expiring from '../components/pantry-storage/inc-expiration/inc-expiration.js'
 
 function Middle({items, setItems}) {
     return (
         <div className="middle">
             <div className="expirations">
-                {/* <inc-expiration></inc-expiration>*/}
                 <div>
-                <p className="titletag">Expired</p>
+                <h2 className="titletag">Expired</h2>
                 <PastExpiration items={items} setItems={setItems}/>
+                </div>
+            </div>
+            <div className="expirations2">
+                <div>
+                    <h2 className="othertitle">Expiring Soon</h2>
+                    <Expiring/>
                 </div>
             </div>
         </div>
