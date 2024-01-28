@@ -1,22 +1,24 @@
 .nav {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  display: block;
+  margin-bottom: 15px;
   padding-top: 1px;
   width: 20vw;
   padding-right:100px;
 }
 
 .navcontainer {
+  margin: 10px;
   background: linear-gradient(#D68C45, #FEFEE3);
 }
 
 .welcome-text {
+  margin-left: 50px;
   font-size: 25px;
   text-align: center;
   border-radius: 10px;
   background-color: #FEFEE3;
-  
 }
 
 .pfp {
