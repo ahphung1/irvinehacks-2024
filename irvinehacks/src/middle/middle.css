@@ -1,4 +1,4 @@
-.middle {
+/* .middle {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,7 @@
     margin-right: auto;
     text-align: center;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .expirations2 {
@@ -21,4 +21,5 @@
     margin-right: auto;
     text-align: center;
     border-radius: 10px;
+    height: 100px;
 }
