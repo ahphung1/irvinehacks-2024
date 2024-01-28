@@ -16,3 +16,12 @@
   margin:10px;
   padding:3px;
 }
+
+::-webkit-scrollbar{
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #CBCBCB;
+  border-radius: 10px;
+}

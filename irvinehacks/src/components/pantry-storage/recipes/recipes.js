@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './recipes.css';
 import Column from "../column-dividers.js";
 
-const api_key = 'a2d3ea4415e3415cbef769aa4b7a86de';
+const api_key = '7932606f997a46bf8487025faf4698b6';
 
 // function RecipeNav() {
 //   return (
