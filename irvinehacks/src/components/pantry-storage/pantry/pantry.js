@@ -97,7 +97,7 @@ const Pantry = ({items, setItems}) => {
     return (
         <div>
             <div className="pantry-title">
-                <h2>pantry</h2>
+                <h2>Your Pantry</h2>
             </div>
             <div className="pantry-items">
             {items.map((item) => (
