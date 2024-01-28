@@ -13,42 +13,30 @@ const Pantry = () => {
     
     const [items, setItems] = useState([
         {
-            name: "item1",
+            name: "apple",
             id: "wjavande",
-            description: "apple or something",
             expiration_date: "2024-02-03"
         },
         {
-            name: "item2",
+            name: "cereal",
             id: "azerty",
-            description: "beans?",
             expiration_date: "2024-12-24"
         },
         {
-            name: "item3",
+            name: "bananas",
             id: "dvorak",
-            description: "spaghetti",
             expiration_date: "2025-02-03"
         }
 
     ]);
 
-    const [description, setDescription] = useState('');
     const [id, setId] = useState('');
 
     const[input, setInput] = useState({
-        description: "",
         name: "",
         expiration_date: ""
     });
 
-    const scription = (description) => {
-        setInput({
-            ...input,
-            description: description,
-        })
-        console.log(input);
-    }
     const d = (name) => {
         setInput({
             ...input,
@@ -70,8 +58,6 @@ const Pantry = () => {
         //     description: event.target.description,
         //     author: event.target.author,
         // });
-        console.log("Yo, is this even getting through");
-        console.log(items);
         input.id = uuidv1();
         if (items.length == 0)
         {
@@ -114,7 +100,7 @@ const Pantry = () => {
             {items.map((item) => (
                 <div className="itembox">
                     <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
-                    <Item id={item.id} name={item.name} description={item.description} expiration_date={item.expiration_date}/>
+                    <Item id={item.id} name={item.name} expiration_date={item.expiration_date}/>
                 </div>
             ))}
             <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
@@ -122,10 +108,6 @@ const Pantry = () => {
                     <label for="name">
                         <p>Name:</p>
                         <input type="text" name="description" onChange={event => d(event.target.value)}></input>
-                    </label>
-                    <label for="description">
-                        <p>Description:</p>
-                        <input type="text" name="name" onChange={event => scription(event.target.value)}></input>
                     </label>
                     <label for="expiration_date">
                         <p>Expiration Date:</p>
@@ -179,7 +161,6 @@ const daysTilExpired = (date) => {
 }
 
 const Item = (props) => {
-    const [StrikeThroughCSS, setStrikeThroughCSS] = useState(false)
     const days_til_expired = daysTilExpired(props.expiration_date)
     let expireStyle;
     if (days_til_expired < 0)
@@ -200,25 +181,10 @@ const Item = (props) => {
     }
     
     return (<div className="item">
-        <Checkbox color="success" onClick={() => 
-            setStrikeThroughCSS((prev) => !prev)}
-        /> {/* https://mui.com/material-ui/react-checkbox/ */}
         <div className={expireStyle}>
-            <p className="item-title" style={
-                {
-                    textDecoration: StrikeThroughCSS ? "line-through" : "none"
-                }}>{props.name}</p>
+            <p className="item-title">{props.name}</p>
             <br/>
-            <p className="item-description" style={
-                {
-                textDecoration: StrikeThroughCSS ? "line-through" : "none"
-            }}>{props.description}</p> 
-            <br/>
-            <p className="item-description" style={
-                {
-                    textDecoration: StrikeThroughCSS ? "line-through" : "none"
-                }
-            }>
+            <p className="item-description">
                 {timeTilExpired(props.expiration_date)}
             </p>
         </div>
