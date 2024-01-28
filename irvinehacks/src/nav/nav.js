@@ -8,7 +8,7 @@ function Nav() {
     <div>
       <div className = "nav">
         <div className= "welcome-text">
-            <b>Welcome {userName}!</b>
+          <h2>Welcome {userName}!</h2>
           </div>
       </div>
       <div>
