@@ -1,6 +1,6 @@
 .home {
-  position: fixed;
-  right: 0;
+  position: static;
+  margin-right: 100px;
 }
 
 .submission {
