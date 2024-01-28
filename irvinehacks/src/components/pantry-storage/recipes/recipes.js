@@ -1,12 +1,26 @@
 import './recipes.css';
 import Column from "../column-dividers.js";
+import React, { useState, useEffect } from 'react';
 
 const api_key = '83c9dd5649db42ad9768f557fefe366e';
 
 function RecipeColumn({items}) {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const query = getRecipeQuery({items, api_key});
+    fetchAvailableRecipes(query, setRecipes);
+  }, [items]);
+
+  // const renderRecipes = recipes.map((recipe) => (
+  //   <Recipe key={recipe.id} title={recipe.title} image={recipe.image} sourceUrl={`https://spoonacular.com/recipes/${recipe.title}-${recipe.id}`} />
+  // ));
+
   return (
     <div>
-      <Column value = {RecipeContents({items})}/>
+      {recipes.map((recipe) => (
+        <Recipe key={recipe.id} title={recipe.title} image={recipe.image} sourceUrl={`https://spoonacular.com/recipes/${recipe.title}-${recipe.id}`} />
+      ))}
     </div>
   );
 }
@@ -40,37 +54,28 @@ function getRecipeQuery({items, api_key}) {
   return 'https://api.spoonacular.com/recipes/findByIngredients?number=10&ignorePantry=true&ranking=2&limitLicense=true&ingredients=' + ingredientsQuery + "&apiKey=" + api_key;
 }
 
-function fetchAvailableRecipes(query) {
+function fetchAvailableRecipes(query, setRecipes) {
 
   fetch(query)
-  .then(response => {
-    if (response.ok) {
-      return response.json(); // Parse the response data as JSON
-    } else {
-      throw new Error('API request failed');
-    }
-  })
-  .then(data => {
-    return data
-    // Process the response data here
-    //console.log(data); // Example: Logging the data to the console
-  })
-  .catch(error => {
-    // Handle any errors here
-    console.error(error); // Example: Logging the error to the console
-    return null;
-  });
-
+    .then(response => response.json())
+    .then(data => {
+      setRecipes(data); 
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
-function Recipe(props){
+
+
+function Recipe({title, image, sourceUrl}) {
+
   return (
-    <div>
-      <a href={props.sourceUrl}>{props.title}</a>
-      <br/>
-      <img src={props.image} alt={props.title}/>
+    <div className="recipe">
+      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{title}</a>
+      <img src={image} alt={title} />
     </div>
-  )
+  );
 }
 
 
