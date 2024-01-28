@@ -4,29 +4,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
 
 const Pantry = () => {
-    
     const [items, setItems] = useState([
-        {
-            name: "apple",
-            id: "wjavande",
-            expiration_date: "2024-02-03"
-        },
-        {
-            name: "cereal",
-            id: "azerty",
-            expiration_date: "2024-12-24"
-        },
-        {
-            name: "bananas",
-            id: "dvorak",
-            expiration_date: "2025-02-03"
-        }
-
+      {
+        name: "apple",
+        id: "wjavande",
+        expiration_date: "2024-02-03"
+      },
+      {
+        name: "cereal",
+        id: "azerty",
+        expiration_date: "2024-12-24"
+      },
+      {
+        name: "bananas",
+        id: "dvorak",
+        expiration_date: "2025-02-03"
+      }
     ]);
 
     const [id, setId] = useState('');
@@ -97,19 +95,19 @@ const Pantry = () => {
                 <h2>pantry</h2>
             </div>
             <div className="chore-list">
-                {items.map((item) => (
-                    <div className="itembox">
-                        <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
-                        <Item id={item.id} name={item.name} expiration_date={item.expiration_date}/>
-                    </div>
-                ))}
+            {items.map((item) => (
+            <div className="itembox" key={item.id}>  
+                <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
+                <Item name={item.name} expiration_date={item.expiration_date}/>
+             </div>
+            ))}
                 <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
                     <form onSubmit={handleSubmit}>
-                        <label for="name">
+                        <label htmlFor="name">
                             <p>Name:</p>
                             <input type="text" name="description" onChange={event => d(event.target.value)}></input>
                         </label>
-                        <label for="expiration_date">
+                        <label htmlFor="expiration_date">
                             <p>Expiration Date:</p>
                             <input type="date" name="expiration_date" onChange={event => expdate(event.target.value)}></input>
                         </label>
