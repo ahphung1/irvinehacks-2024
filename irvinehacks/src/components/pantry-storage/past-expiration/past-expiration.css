@@ -16,6 +16,7 @@
   margin:10px;
   padding:3px;
   border-style: solid;
-  border-color: #123420;
+  border-width: 10px;
+  border-color: #4C956C;
   border-radius: 10px;
 }
