@@ -15,7 +15,7 @@ function Nav({ items }) {
         <img className = "pfp" src={ProfilePicture} alt="Avatar"></img>
       </div>
       <div>
-        <p className = "suggestion">Want to make something new?</p>
+        <h2 className = "suggestion">Want to make something new?</h2>
         <RecipeBar items={items}/>
       </div>
     </div>
