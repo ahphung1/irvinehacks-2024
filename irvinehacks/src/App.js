@@ -25,7 +25,7 @@ function App() {
   
   return (
     <div className="root">
-      <Nav />
+      <Nav items={items}/>
       <Middle />
       <Home />
     </div>

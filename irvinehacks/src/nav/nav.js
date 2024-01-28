@@ -2,7 +2,7 @@ import './nav.css';
 import ProfilePicture from './profilepicture.png';
 import RecipeBar from '../components/pantry-storage/recipes/recipes.js';
 
-function Nav() {
+function Nav({ items }) {
   const userName = "Steven";
   return (
     <div>
@@ -16,7 +16,7 @@ function Nav() {
       </div>
       <div>
         <p className = "suggestion">Want to make something new?</p>
-        <RecipeBar/>
+        <RecipeBar items={items}/>
       </div>
     </div>
     
