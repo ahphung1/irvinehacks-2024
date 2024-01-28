@@ -3,7 +3,7 @@ import './recipes.css';
 function RecipeBar() {
   return (
     <div className="recipe-scroll">
-      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengdsleague of legengdsleague of legengdsleague of legengds"/>
       <RecipeItem text = "league of legengds"/>
       <RecipeItem text = "league of legengds"/>
       <RecipeItem text = "league of legengds"/>

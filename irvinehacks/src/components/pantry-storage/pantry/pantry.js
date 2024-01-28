@@ -92,29 +92,31 @@ const Pantry = () => {
 
     
     return (
-        <div className="chore-list">
+        <div>
             <div className="pantry-title">
                 <h2>pantry</h2>
             </div>
-            {items.map((item) => (
-                <div className="itembox">
-                    <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
-                    <Item id={item.id} name={item.name} expiration_date={item.expiration_date}/>
-                </div>
-            ))}
-            <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
-                <form onSubmit={handleSubmit}>
-                    <label for="name">
-                        <p>Name:</p>
-                        <input type="text" name="description" onChange={event => d(event.target.value)}></input>
-                    </label>
-                    <label for="expiration_date">
-                        <p>Expiration Date:</p>
-                        <input type="date" name="expiration_date" onChange={event => expdate(event.target.value)}></input>
-                    </label>
-                    <IconButton type="submit" color="primary"><AddCircleIcon /></IconButton>
-                </form>
-            </Popup>
+            <div className="chore-list">
+                {items.map((item) => (
+                    <div className="itembox">
+                        <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
+                        <Item id={item.id} name={item.name} expiration_date={item.expiration_date}/>
+                    </div>
+                ))}
+                <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
+                    <form onSubmit={handleSubmit}>
+                        <label for="name">
+                            <p>Name:</p>
+                            <input type="text" name="description" onChange={event => d(event.target.value)}></input>
+                        </label>
+                        <label for="expiration_date">
+                            <p>Expiration Date:</p>
+                            <input type="date" name="expiration_date" onChange={event => expdate(event.target.value)}></input>
+                        </label>
+                        <IconButton type="submit" color="primary"><AddCircleIcon /></IconButton>
+                    </form>
+                </Popup>
+            </div>
         </div>
     )
 }
@@ -179,15 +181,14 @@ const Item = (props) => {
         expireStyle = "item item-good"
     }
     
-    return (<div className="item">
-        <div className={expireStyle}>
-            <p className="item-title">{props.name}</p>
-            <br/>
-            <p className="item-description">
-                {timeTilExpired(props.expiration_date)}
-            </p>
-        </div>
-    </div> 
+    return (
+    <div className={expireStyle}>
+        <p className="item-title">{props.name}</p>
+        <br/>
+        <p className="item-description">
+            {timeTilExpired(props.expiration_date)}
+        </p>
+    </div>
     );
 }
 
