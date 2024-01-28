@@ -94,7 +94,7 @@ const Pantry = () => {
             <div className="pantry-title">
                 <h2>pantry</h2>
             </div>
-            <div className="chore-list">
+            <div className="pantry-items">
             {items.map((item) => (
             <div className="itembox" key={item.id}>  
                 <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
