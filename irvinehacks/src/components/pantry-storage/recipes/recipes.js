@@ -2,21 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './recipes.css';
 import Column from "../column-dividers.js";
 
-const api_key = '83c9dd5649db42ad9768f557fefe366e';
-
-// function RecipeNav() {
-//   return (
-//     <div className="recipe-scroll">
-//       <RecipeItem text = "league of legengdsleague of legengdsleague of legengdsleague of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-      // <RecipeItem text = "league of legengds"/>
-//     </div>
-//   );
-// }
+const api_key = 'a2d3ea4415e3415cbef769aa4b7a86de';
 
 function RecipeBar({ items }) {
   const [recipes, setRecipes] = useState([]);
