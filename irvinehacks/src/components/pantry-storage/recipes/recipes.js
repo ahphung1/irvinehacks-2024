@@ -1,11 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './recipes.css';
 
-function App() {
+function RecipeBar() {
   return (
-    <div className="App">
+    <div className="recipe-scroll">
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
+      <RecipeItem text = "league of legengds"/>
     </div>
   );
 }
 
-export default App;
+function RecipeItem(props) {
+  return (
+    <div className = "recipe-item">
+      <p>Recipe:</p>
+      <div className = "recipe-text">{props.text}</div>
+    </div>
+  );
+}
+
+export default RecipeBar;
