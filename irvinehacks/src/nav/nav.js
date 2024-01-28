@@ -6,15 +6,24 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Popup from 'reactjs-popup';
 import IconButton from '@mui/material/IconButton';
 
+const loadedName = localStorage.getItem('username') 
+
+const handleSubmit = (event) => {
+  
+}
+
 function Nav({ items }) {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState(loadedName == null ? '' : loadedName);
+  const [nameInput, setNameInput] = useState('');
   const handleNameChange = (event) => {
-    setUserName(event.target.value);
+    setNameInput(event.target.value);
   };
 
   const handleNameSubmit = (event) => {
     event.preventDefault(); 
-    alert(`Hello ${userName}!`); 
+    setUserName(nameInput);
+    localStorage.setItem('username', nameInput);
+    alert(`Hello ${nameInput}!`); 
   };
 
   return (
@@ -25,7 +34,7 @@ function Nav({ items }) {
           <input
             type="text"
             placeholder="What is your name?"
-            value={userName}
+            value={nameInput}
             onChange={handleNameChange}
           />
           <IconButton type="submit"><AddCircleIcon /></IconButton>
