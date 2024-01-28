@@ -4,29 +4,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
 
 const Pantry = () => {
-    
     const [items, setItems] = useState([
-        {
-            name: "apple",
-            id: "wjavande",
-            expiration_date: "2024-02-03"
-        },
-        {
-            name: "cereal",
-            id: "azerty",
-            expiration_date: "2024-12-24"
-        },
-        {
-            name: "bananas",
-            id: "dvorak",
-            expiration_date: "2025-02-03"
-        }
-
+      {
+        name: "apple",
+        id: "wjavande",
+        expiration_date: "2024-02-03"
+      },
+      {
+        name: "cereal",
+        id: "azerty",
+        expiration_date: "2024-12-24"
+      },
+      {
+        name: "bananas",
+        id: "dvorak",
+        expiration_date: "2025-02-03"
+      }
     ]);
 
     const [id, setId] = useState('');
@@ -92,29 +90,31 @@ const Pantry = () => {
 
     
     return (
-        <div className="chore-list">
+        <div>
             <div className="pantry-title">
                 <h2>pantry</h2>
             </div>
+            <div className="chore-list">
             {items.map((item) => (
-                <div className="itembox">
-                    <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
-                    <Item id={item.id} name={item.name} expiration_date={item.expiration_date}/>
-                </div>
+            <div className="itembox" key={item.id}>  
+                <IconButton type="delete" color="primary" onClick={event => handleDelete(item)}><DeleteIcon/></IconButton>
+                <Item name={item.name} expiration_date={item.expiration_date}/>
+             </div>
             ))}
-            <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
-                <form onSubmit={handleSubmit}>
-                    <label for="name">
-                        <p>Name:</p>
-                        <input type="text" name="description" onChange={event => d(event.target.value)}></input>
-                    </label>
-                    <label for="expiration_date">
-                        <p>Expiration Date:</p>
-                        <input type="date" name="expiration_date" onChange={event => expdate(event.target.value)}></input>
-                    </label>
-                    <IconButton type="submit" color="primary"><AddCircleIcon /></IconButton>
-                </form>
-            </Popup>
+                <Popup trigger={<IconButton color="primary"><AddCircleIcon/></IconButton>} modal nested>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="name">
+                            <p>Name:</p>
+                            <input type="text" name="description" onChange={event => d(event.target.value)}></input>
+                        </label>
+                        <label htmlFor="expiration_date">
+                            <p>Expiration Date:</p>
+                            <input type="date" name="expiration_date" onChange={event => expdate(event.target.value)}></input>
+                        </label>
+                        <IconButton type="submit" color="primary"><AddCircleIcon /></IconButton>
+                    </form>
+                </Popup>
+            </div>
         </div>
     )
 }
@@ -179,15 +179,14 @@ const Item = (props) => {
         expireStyle = "item item-good"
     }
     
-    return (<div className="item">
-        <div className={expireStyle}>
-            <p className="item-title">{props.name}</p>
-            <br/>
-            <p className="item-description">
-                {timeTilExpired(props.expiration_date)}
-            </p>
-        </div>
-    </div> 
+    return (
+    <div className={expireStyle}>
+        <p className="item-title">{props.name}</p>
+        <br/>
+        <p className="item-description">
+            {timeTilExpired(props.expiration_date)}
+        </p>
+    </div>
     );
 }
 
