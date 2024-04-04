@@ -19,10 +19,24 @@ ZOT Pantry is a user-friendly web application that allows users to log their foo
 3. check whether the packages are installed:
    1) node -v
    2) npm -v
-4. Start the development server:
+4. install dependencies:
+   ```
+   npm install
+
+   ```
+6. Start the development server:
    ```
    cd my-react-app
-   npm cache clean --force
+   npm run build
    npm start
 
    ```
+## Troubleshooting
+clean npm cache when encountering certain cache-related issues.
+
+```
+ npm cache clean --force
+```
+## Demo
+[Demo](https://github.com/Emmeline1101/irvinehacks-2024/blob/main/img/pantry-demo.gif)
+
